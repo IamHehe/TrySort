@@ -50,7 +50,7 @@ def BottomUp_merge_sort(a):
             end = min(n, start + (2 * width))
             BottomUp_Merge(a, b, start, mid, end)
             start += 2 * width
-        a = b[:]
+        a = b[:]  # 使用合并排序后的结果作为下一次迭代的基础
         width *= 2  # 2 4 8  16 这样的方式获取
     return a
 
