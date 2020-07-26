@@ -13,6 +13,8 @@
     稳定
 
 """
+
+# 自上向下分，递归
 def merge_sort(arr):
     if len(arr) < 2:
         return arr
@@ -35,6 +37,39 @@ def merge(left, right):
         return res
 
 
+# 归并排序，新增自下至上的迭代，通过扩展步长weight进行
+# 参考：https://www.pythonheidong.com/blog/article/453039/
+def BottomUp_merge_sort(a):
+    n = len(a)
+    b = a[:]  # 深拷贝一个a
+    width = 1  # 步长
+    while width < n:  # 步长小于列表长度
+        start = 0  # 起始位置
+        while start < n:
+            mid = min(n, start + width)  # n只有在最后start+width超过整个句子的长度的时候才会被选取
+            end = min(n, start + (2 * width))
+            BottomUp_Merge(a, b, start, mid, end)
+            start += 2 * width
+        a = b[:]
+        width *= 2  # 2 4 8  16 这样的方式获取
+    return a
+
+def BottomUp_Merge(a, b, start, mid, end):
+    i = start
+    j = mid
+    for k in range(start, end):
+        if i < mid and (j >= end or a[i] <= a[j]):  # j>=end 即后面的不尽兴操作，直接复制
+            b[k] = a[i]
+            i += 1
+        else:
+            b[k] = a[j]
+            j += 1
+
+
 if __name__ == "__main__":
     lis = [3, 4, 2, 1, 6, 5]
     print(merge_sort(lis))
+
+    lis = [3, 4, 2, 1, 6, 5]
+    lis = BottomUp_merge_sort(lis)
+    print(lis)
