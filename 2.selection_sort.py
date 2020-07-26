@@ -29,7 +29,8 @@ def seletion_sort_pythonic(arr):
     """
     for i in range(len(arr) -1):
         min_idx = arr.index(min(arr[i:]))  # 获取最小的元素的序号，如果并列获取第一个  # 内置函数min的复杂度也是O(n)
-        arr[i], arr[min_idx] = arr[min_idx], arr[i]
+        if min_idx - i:  # 如果不为0，继续
+            arr[i], arr[min_idx] = arr[min_idx], arr[i]
     # return arr  # 甚至可以不用return 因为直接对应内存空间的元素进行了排序修改。
 
 

@@ -23,7 +23,6 @@ def insertion_sort(arr):
         arr[pre_index + 1] = current  # 将移动额值插入到pre_index的后面
     return arr
 
-
 if __name__ == "__main__":
     lis = [3, 4, 2, 1, 6, 5]
     print(insertion_sort(lis))

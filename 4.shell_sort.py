@@ -34,7 +34,25 @@ def shellSort(arr):
         gap //= 3  #
     return arr
 
+def shellsort(arr):
+    # 本处使用的步长是n//2
+    gap = len(arr) // 2
+    while gap>0:
+        for i in range(gap, len(arr)):
+            cur = arr[i]
+            j = i - gap
+            while j >= 0 and arr[j] > cur:
+                arr[j + gap] = arr[j]  # insertion sort中是1
+                j -= gap
+            arr[j + gap] = cur
+        gap //= 2
+
 
 if __name__ == "__main__":
     lis = [3, 4, 2, 1, 6, 5]
     print(shellSort(lis))
+
+    # 使用内存处理不返回的操作如下
+    lis = [3, 4, 2, 1, 6, 5]
+    shellsort(lis)
+    print(lis)
