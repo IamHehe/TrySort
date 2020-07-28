@@ -15,12 +15,12 @@
 """
 
 
-def counting_sort(arr, max):
+def counting_sort(arr, max_num):
     """
     :param arr: 需要排序的列表
-    :param max_value: 列表中的的值范围
+    :param max_num: 列表中的最大值
     """
-    buf_len = max + 1
+    buf_len = max_num + 1
     buf = [0] * buf_len
     sort_idx = 0
     arr_len = len(arr)
@@ -34,13 +34,11 @@ def counting_sort(arr, max):
     return arr
 
 
-def counting_sort_show_stability(arr, max):
+def counting_sort_show_stability(arr, max_num):
     """
     换一种写法展示其稳定性
     """
-    from collections import defaultdict
-    buf = defaultdict(list)
-    sort_idx = 0
+    buf = {i: [] for i in range(max_num+1)}  # 不能使用[[]]*(max+1)，这样新建的空间中各个[]是共享内存的
     arr_len = len(arr)
     for i in range(arr_len):
         num = arr[i]
