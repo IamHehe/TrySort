@@ -33,4 +33,4 @@ def bucket_sort_simplify(arr, max_num):
 
 if __name__ == "__main__":
     lis = [3.1, 4.2, 3.3, 3.5, 2.2, 2.7, 2.9, 2.1, 1.55, 4.456, 6.12, 5.2, 5.33, 6.0, 2.12]
-    print(bucket_sort(lis, max(lis)))
+    print(bucket_sort_simplify(lis, max(lis)))
